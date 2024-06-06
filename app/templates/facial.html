@@ -5,9 +5,179 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RECONOCIMIENTO</title>
-<link rel="stylesheet" type="text/css" href="{% static '/css/facial.css' %}"> 
+<link rel="stylesheet" type="text/css" href="{% static '/css/facial.css' %}">
 <link rel="stylesheet" href="{% static '/lib/menuhb.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+
 </head>
+<style>
+
+
+.classContenedorFoto {
+    border-radius: 10px;
+    border-left: 2px solid #e5e5e5;
+    border-bottom: 2px solid #e5e5e5;
+    border-right: 2px solid #e5e5e5;
+}
+
+.classCanvas,
+.classVideo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid black;
+    {#background-image: url('Views/Img/user-circle-o-2.png');#}
+}
+
+.center-video,
+.center-canvas {
+    margin: 0 auto;
+}
+
+.btn-container button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+.btnCapturar, .btnEliminar, .btnCancelar, .classVideo {
+    display: none;
+}
+
+.classSpanFoto, label {
+    font-size: 22px;
+    display: inline-block; /* Para que el label y el input se muestren en la misma línea */
+    margin-bottom: 0; /* Espacio entre el label y el input */
+}
+
+
+
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+
+    const canvas = document.getElementById('Canvas');
+    const video = document.getElementById('Video');
+    const btnCamara = document.getElementById('BtnCamara');
+    const btnSubirFoto = document.getElementById('BtnSubirFoto');
+    const btnCapturar = document.getElementById('BtnCapturar');
+    const btnCancelar = document.getElementById('BtnCancelar');
+    const btnEliminar = document.getElementById('BtnEliminar');
+    let stream;
+    let isStreaming = false;
+    let fotoCapturada = null;
+    let imagenCargadaOAdicional = false;
+    const ctx = canvas.getContext('2d');
+    const backgroundImage = new Image();
+    backgroundImage?.addEventListener('load', () => ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height));
+    backgroundImage?.setAttribute('src', 'Views/Img/user-circle-o-2.png');
+
+
+
+    btnCamara.addEventListener('click', startCamera);
+    btnCancelar.addEventListener('click', stopCamera);
+    btnCapturar.addEventListener('click', captureImage);
+    btnEliminar.addEventListener('click', deleteImage);
+    btnSubirFoto.addEventListener('click', cargarImagen);
+
+
+
+
+// Funciones del manejo de cámara y subir fotos
+    async function startCamera() {
+        try {
+            stream = await navigator.mediaDevices.getUserMedia({video: true});
+            video.srcObject = stream;
+            video.play();
+            video.style.marginBottom = '6px';
+            isStreaming = true;
+            canvas.style.display = 'none';
+            canvas.classList.add('center-canvas');
+            video.style.display = 'block';
+            video.classList.add('center-video');
+            btnCamara.style.display = 'none';
+            btnSubirFoto.style.display = 'none';
+            btnCapturar.style.display = 'inline-block';
+            btnCancelar.style.display = 'inline-block';
+
+            if (!fotoCapturada) {
+                btnEliminar.style.display = 'none';
+            }
+        } catch (error) {
+            console.error('Error al acceder a la cámara:', error);
+        }
+    }
+
+    function stopCamera() {
+        if (stream) {
+            stream.getTracks().forEach(track => {
+                track.stop();
+            });
+            video.style.display = 'none';
+            canvas.style.display = 'block';
+            btnCapturar.style.display = 'none';
+            btnCancelar.style.display = 'none';
+            btnCamara.style.display = 'inline-block';
+            btnSubirFoto.style.display = 'inline-block';
+            isStreaming = false;
+        }
+    }
+
+    function captureImage() {
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        stopCamera();
+        fotoCapturada = canvas.toDataURL(); // Guardar la foto capturada como base64
+        canvas.style.marginBottom = '6px';
+        btnEliminar.style.display = 'inline-block';
+        imagenCargadaOAdicional = true;
+    }
+
+    function deleteImage() {
+        const context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        fotoCapturada = null;
+        btnEliminar.style.display = 'none';
+        imagenCargadaOAdicional = false;
+    }
+
+    function cargarImagen() {
+        let input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.onchange = function (event) {
+            let file = event.target.files[0];
+            if (!file) return;
+
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                let img = new Image();
+                img.onload = function () {
+                    const context = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    canvas.style.border = '5px solid black';
+
+                    imagenCargadaOAdicional = true;
+
+                    btnEliminar.style.display = 'inline-block';
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+        input.click();
+    }
+
+})
+;
+
+</script>
 <body>
 <div class="header">
   <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
@@ -23,7 +193,7 @@
     <a href="recetas.html">Recetas Inteligentes</a>
     <a href="clasificacion.html">Clasificación Inteligente</a>
     <a href="informes.html">Informes y Analisis</a>
-    <a href="facial.html">Reconocimiento de Alimentos</a>    
+    <a href="facial.html">Reconocimiento de Alimentos</a>
   </div>
 </div>
 
@@ -37,8 +207,40 @@
 
 <div class="container">
   <div class="box">
+    <div class="text-center classContenedorFoto" id="ContenedorFoto">
+      <span class="classSpanFoto">Foto&nbsp;<i class="fas fa-user-circle fa-lg"></i></span>
+      <div class="container">
+          <canvas id="Canvas" class="classCanvas" name="namFoto"></canvas>
+          <video id="Video" class="classVideo" autoplay></video>
+{#          <div class="btn-container" id="idBtnContainer">#}
+{#              <button type="button" id="BtnCamara" class="btnCamara btnefect">Cámara&nbsp;<i#}
+{#                          class="fas fa-camera fa-lg"></i></button>#}
+{#              <button type="button" id="BtnSubirFoto" style="display: none"  class="btnSubirFoto btnefect">Subir&nbsp;<i#}
+{#                          class="fas fa-folder fa-lg"></i></button>#}
+{#              <button type="button" id="BtnEliminar" class="btnEliminar btnefect">Eliminar&nbsp;<i#}
+{#                          class="fas fa-trash-alt fa-lg"></i></button>#}
+{#              <button type="button" id="BtnCapturar" class="btnCapturar btnefect">Capturar&nbsp;<i#}
+{#                          class="fas fa-camera-retro fa-lg"></i></button>#}
+{#              <button type="button" id="BtnCancelar" class="btnCancelar btnefect">Cancelar&nbsp;<i#}
+{#                          class="fas fa-camera-slash fa-lg"></i></button>#}
+{#          </div>#}
+{#      </div>#}
   </div>
-  <button class="scan-button">ESCANEAR</button>
+  </div>
+{#  <button class="scan-button">ESCANEAR</button>#}
+       <div class="btn-container" id="idBtnContainer">
+              <button type="button" id="BtnCamara" class="btnCamara btnefect scan-button">Escanear&nbsp;<i
+                          class="fas fa-camera fa-lg"></i></button>
+              <button type="button" id="BtnSubirFoto" style="display: none"  class="btnSubirFoto btnefect scan-button">Subir&nbsp;<i
+                          class="fas fa-folder fa-lg"></i></button>
+              <button type="button" id="BtnEliminar" class="btnEliminar btnefect scan-button">Eliminar&nbsp;<i
+                          class="fas fa-trash-alt fa-lg"></i></button>
+              <button type="button" id="BtnCapturar" class="btnCapturar btnefect scan-button">Capturar&nbsp;<i
+                          class="fas fa-camera-retro fa-lg"></i></button>
+              <button type="button" id="BtnCancelar" class="btnCancelar btnefect scan-button">Cancelar&nbsp;<i
+                          class="fas fa-camera-slash fa-lg"></i></button>
+          </div>
+      </div>
 </div>
 
 <script src="{% static '/js/menu.js' %}"></script>
