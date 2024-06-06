@@ -1,0 +1,111 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    background-color: #333; /* Color de fondo del encabezado */
+    color: #fff;
+    background-image: url('/static/img/barra.jpeg'); /* URL de la imagen de fondo */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .header img.profile {
+    height: 100%;
+    max-height: 40px; /* Controla el tamaño máximo de la imagen de perfil */
+    border-radius: 50%; /* Hace que el icono de perfil sea redondo */
+    overflow: hidden; /* Oculta cualquier contenido que exceda los bordes */
+  }
+  /* Estilos para el menú desplegable */
+  .menu-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .menu-icon i {
+    font-size: 24px;
+  }
+  .menu {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 2; /* Asegura que el menú esté sobre los cuadros */
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Agrega sombra al menú */
+    width: 150px; /* Ancho del menú desplegable */
+  }
+  .menu a {
+    padding: 10px 20px; /* Espaciado de las opciones del menú */
+    text-decoration: none; /* Quita el subrayado del texto del enlace */
+    color: #333; /* Cambia el color del texto a oscuro */
+    transition: background-color 0.3s ease; /* Agrega transición al color de fondo */
+  }
+  .menu a:hover {
+    background-color: #f2f2f2; /* Cambia el color de fondo al pasar el ratón por encima */
+  }
+  .menu.active {
+    display: flex; /* Cambia la visualización del menú a flex */
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido en el eje horizontal */
+    height: calc(100% - 70px); /* Restamos el margen superior e inferior y la altura del encabezado */
+    padding: 20px; /* Margen alrededor del contenedor */
+  }
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px; /* Tamaño de la fuente */
+    width: 50%; /* Ancho del cuadro */
+    height: 70%; /* Altura del cuadro */
+    background-color: #fdfbfb; /* Color de fondo del cuadro */
+    border: 2px solid #0e11df; /* Grosor del borde y color */
+    border-radius: 0px; /* Bordes redondeados */
+  }
+  .scan-button {
+    background-color: #0c4c91; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    font-size: 18px; /* Tamaño de la fuente */
+    border: none; /* Sin borde */
+    border-radius: 10px; /* Hace que los bordes del botón sean ligeramente redondeados */
+    width: 120px; /* Ancho del botón */
+    height: 80px; /* Altura del botón */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 20px; /* Espacio entre el cuadro y el botón */
+  }
+
+  /* Estilos para los títulos */
+  .titles-container {
+    position: absolute;
+    top: 15%; /* Ajusta la posición vertical */
+    right: 8%; /* Ajusta la posición horizontal */
+    text-align: right; /* Alinea el texto a la derecha */
+    color: #03010e; /* Color del texto */
+  }
+
+  .titles-container h2,
+  .titles-container h3 {
+    margin: 0; /* Elimina el margen predeterminado */
+    padding: 20px 0; /* Añade un pequeño espacio entre los títulos */
+    font-family: Arial, sans-serif; /* Cambia la fuente de los títulos */
+  }

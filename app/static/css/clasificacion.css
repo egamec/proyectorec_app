@@ -1,0 +1,66 @@
+ body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    padding: 0 20px;
+    color: #fff;
+    position: relative; /* Añadido para posicionar el menú desplegable */
+    background-image: url('/static/img/barra.jpeg'); /* Fondo de imagen para el encabezado */
+    background-size: cover; /* Ajusta la imagen de fondo para cubrir el encabezado */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  .header .title {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Hace que el contenedor del título ocupe el espacio disponible */
+  }
+  .header .title i {
+    margin-right: 5px;
+  }
+  .profile img {
+    height: 100%;
+    max-height: 40px; /* Controla el tamaño máximo de la imagen de perfil */
+    border-radius: 50%; /* Hace que el icono de perfil sea redondo */
+    overflow: hidden; /* Oculta cualquier contenido que exceda los bordes */
+  }
+  /* Estilos para el menú desplegable */
+  .menu-icon {
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  .menu-icon i {
+    font-size: 24px;
+  }
+  .menu {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+    z-index: 2; /* Asegura que el menú esté sobre los cuadros */
+    flex-direction: column; /* Cambia la dirección del flex a columna */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Agrega sombra al menú */
+    width: 150px; /* Ancho del menú desplegable */
+  }
+  .menu a {
+    padding: 10px 20px; /* Espaciado de las opciones del menú */
+    text-decoration: none; /* Quita el subrayado del texto del enlace */
+    color: #333; /* Cambia el color del texto a oscuro */
+    transition: background-color 0.3s ease; /* Agrega transición al color de fondo */
+  }
+  .menu a:hover {
+    background-color: #f2f2f2; /* Cambia el color de fondo al pasar el ratón por encima */
+  }
+  .menu.active {
+    display: flex; /* Cambia la visualización del menú a flex */
+  }

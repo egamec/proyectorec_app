@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RECONOCIMIENTO</title>
+<link rel="stylesheet" type="text/css" href="{% static '/css/facial.css' %}"> 
+<link rel="stylesheet" href="{% static '/lib/menuhb.css' %}">
+</head>
+<body>
+<div class="header">
+  <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+  <div class="title">RECONOCIMIENTO DE ALIMENTOS</div>
+  <div class="profile">
+    <img src="{% static '/img/ICONO.png' %}" alt="Foto de Perfil" class="profile">
+  </div>
+  <!-- Menú desplegable -->
+  <div class="menu" id="menu">
+    <!-- Aquí puedes agregar los elementos del menú desplegable -->
+    <a href="dashboard.html">INICIO</a>
+    <a href="recomendacion_nutri.html">Recomendaciones Nutricionales</a>
+    <a href="recetas.html">Recetas Inteligentes</a>
+    <a href="clasificacion.html">Clasificación Inteligente</a>
+    <a href="informes.html">Informes y Analisis</a>
+    <a href="facial.html">Reconocimiento de Alimentos</a>    
+  </div>
+</div>
+
+<!-- Contenedor para los títulos -->
+<div class="titles-container">
+  <h2 style="color: #3366FF;">INFORMACION</h2>
+  <h3>NOMBRE DEL PRODUCTO</h3>
+  <h3>CANTIDAD</h3>
+  <h3>ESTADO</h3>
+</div>
+
+<div class="container">
+  <div class="box">
+  </div>
+  <button class="scan-button">ESCANEAR</button>
+</div>
+
+<script src="{% static '/js/menu.js' %}"></script>
+
+</body>
+</html>

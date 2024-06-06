@@ -1,0 +1,35 @@
+.fila1{
+    height: 260px;
+    width: 300px;
+    
+    
+}
+
+.fila2{
+    height: 200px;
+    width: 300px;
+    position: absolute;top: 3,5% ; /* ubicar hacia arriba, con bottom es hacia abajo */
+    left: 375px;  /* de izquierda a derecha */
+}
+
+.fila3{
+
+    height: 260px;
+    width: 300px;
+    position: absolute;bottom: 9% ; /* ubicar hacia arriba, con bottom es hacia abajo */
+}
+
+.fila4{
+    height: 200px;
+    width: 300px;
+    position: absolute;top: 3,5% ; /* ubicar hacia arriba, con bottom es hacia abajo */
+    left: 375px;  /* de izquierda a derecha */
+}
+
+
+.fila5{
+    width: 400px;  /*ancho*/
+    height: 510px; /* alto*/
+    left: 870px;  /* de izquierda a derecha */
+    position: absolute;top: 15%  /* ubicar hacia arriba, con bottom es hacia abajo */
+}
