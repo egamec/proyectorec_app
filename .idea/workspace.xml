@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9561b91a-78e0-406d-b142-1c021293cab1" name="Changes" comment="" />
+    <list default="true" id="9561b91a-78e0-406d-b142-1c021293cab1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "EJQP2002"
+  }
+}]]></component>
   <component name="GitToolBoxStore">
     <option name="recentBranches">
       <RecentBranches>
@@ -19,12 +30,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="eddie" />
-                    <option name="lastUsedInstant" value="1717714395" />
+                    <option name="branchName" value="eddie2" />
+                    <option name="lastUsedInstant" value="1717715725" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="eduardo" />
-                    <option name="lastUsedInstant" value="1717713153" />
+                    <option name="lastUsedInstant" value="1717715529" />
                   </RecentBranch>
                 </list>
               </option>
@@ -35,9 +46,15 @@
       </RecentBranches>
     </option>
   </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/egamec/proyectorec_app.git",
+    "accountId": "037252b7-49c3-422e-8151-6f497f6cece9"
+  }
+}]]></component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "eddie",
+    "git-widget-placeholder": "eddie2",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.tslint": "(autodetect)"
   }
@@ -57,6 +74,15 @@
                 </option>
               </RecentGroup>
             </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
           </value>
         </entry>
       </map>
